@@ -1,0 +1,3 @@
+services:
+    mailmotor:
+        class: Mailmotor\Mailmotor
