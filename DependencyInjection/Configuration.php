@@ -12,12 +12,6 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('mailmotor');
 
-        $rootNode
-            ->children()
-                ->scalarNode('service')->isRequired()->end()
-            ->end()
-        ;
-
         return $treeBuilder;
     }
 }

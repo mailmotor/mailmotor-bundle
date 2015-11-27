@@ -1,8 +1,8 @@
 <?php
 
-namespace MailMotor\Bundle\MailChimpBundle\Component;
+namespace MailMotor\Bundle\MailMotorBundle\Component;
 
-use MailMotor\Bundle\MailMotorBundle\Component\Service;
+use MailMotor\Bundle\MailMotorBundle\Component\MailMotor;
 use MailMotor\Bundle\MailMotorBundle\Component\Member;
 
 /**
@@ -13,19 +13,63 @@ use MailMotor\Bundle\MailMotorBundle\Component\Member;
 final class MailMotorMember implements Member
 {
 	/**
-	 * @var Service
+	 * @var Gateway
 	 */
-	protected $service;
+	protected $gateway;
 
 	/**
 	 * Construct
 	 *
-	 * @param Service $service
+	 * @param MailMotor $mailMotor
 	 */
 	public function __construct(
-		Service $service
+		MailMotor $mailMotor
 	) {
-		$this->service = $service;
+		$this->gateway = $mailMotor->getGateway();
+	}
+
+	/**
+	 * Exists
+	 *
+	 * @param string $email
+	 * @param string $listId
+	 * @return boolean
+	 */
+	public function exists(
+		$email,
+		$listId = null
+	) {
+		return (bool) $this->gateway->get(
+			$email,
+			$listId
+		);
+	}
+
+	/**
+	 * Is status
+	 *
+	 * @param string $email
+	 * @param string $listId
+	 * @param string $status
+	 * @return boolean
+	 */
+	protected function isStatus(
+		$email,
+		$listId = null,
+		$status
+	) {
+		$member = $this->gateway->get(
+			$email,
+			$listId
+		);
+
+		// we have a list member
+		if ($member) {
+			return ($member['status'] === $status);
+		// we don't have a member
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -39,9 +83,28 @@ final class MailMotorMember implements Member
 		$email,
 		$listId = null
 	) {
-		return $this->service->isSubscribed(
+		return $this->isStatus(
 			$email,
-			$listId
+			$listId,
+			'subscribed'
+		);
+	}
+
+	/**
+	 * Is unsubscribed
+	 *
+	 * @param string $email
+	 * @param string $listId
+	 * @return boolean
+	 */
+	public function isUnsubscribed(
+		$email,
+		$listId = null
+	) {
+		return $this->isStatus(
+			$email,
+			$listId,
+			'unsubscribed'
 		);
 	}
 
@@ -50,15 +113,18 @@ final class MailMotorMember implements Member
 	 *
 	 * @param string $email
 	 * @param string $listId
+	 * @param array $mergeVars
 	 * @return boolean
 	 */
 	public function subscribe(
 		$email,
-		$listId = null
+		$listId = null,
+		$mergeVars = null
 	) {
-		return $this->service->isSubscribed(
+		return $this->gateway->subscribe(
 			$email,
-			$listId
+			$listId,
+			$mergeVars
 		);
 	}
 
@@ -67,15 +133,18 @@ final class MailMotorMember implements Member
 	 *
 	 * @param string $email
 	 * @param string $listId
+	 * @param array $mergeVars
 	 * @return boolean
 	 */
 	public function unsubscribe(
 		$email,
-		$listId = null
+		$listId = null,
+		$mergeVars = null
 	) {
-		return $this->service->isSubscribed(
+		return $this->gateway->unsubscribe(
 			$email,
-			$listId
+			$listId,
+			$mergeVars
 		);
 	}
 }
