@@ -4,7 +4,7 @@
         colors="true"
         verbose="true">
     <testsuites>
-        <testsuite name="Mailmotor Test Suite">
+        <testsuite name="MailMotor Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

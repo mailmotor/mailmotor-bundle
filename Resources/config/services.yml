@@ -1,3 +1,5 @@
 services:
-    mailmotor:
-        class: Mailmotor\Mailmotor
+    mailmotor.member:
+        class: MailMotor\Bundle\MailMotorBundle\Component\MailMotorMember
+        arguments:
+            - "@mailmotor.service"
