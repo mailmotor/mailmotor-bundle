@@ -19,6 +19,16 @@ interface Gateway
 	public function get($email, $listId);
 
 	/**
+	 * Has status
+	 *
+	 * @param string $email
+	 * @param string $listId
+	 * @param string $status
+	 * @return mixed Returns the item if in database, otherwise false
+	 */
+	public function hasStatus($email, $listId, $status);
+
+	/**
 	 * Subscribe
 	 *
 	 * @param string $email

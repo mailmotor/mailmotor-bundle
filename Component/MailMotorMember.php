@@ -46,33 +46,6 @@ final class MailMotorMember implements Member
 	}
 
 	/**
-	 * Is status
-	 *
-	 * @param string $email
-	 * @param string $listId
-	 * @param string $status
-	 * @return boolean
-	 */
-	protected function isStatus(
-		$email,
-		$listId = null,
-		$status
-	) {
-		$member = $this->gateway->get(
-			$email,
-			$listId
-		);
-
-		// we have a list member
-		if ($member) {
-			return ($member['status'] === $status);
-		// we don't have a member
-		} else {
-			return false;
-		}
-	}
-
-	/**
 	 * Is subscribed
 	 *
 	 * @param string $email
@@ -83,7 +56,7 @@ final class MailMotorMember implements Member
 		$email,
 		$listId = null
 	) {
-		return $this->isStatus(
+		return $this->gateway->hasStatus(
 			$email,
 			$listId,
 			'subscribed'
@@ -101,7 +74,7 @@ final class MailMotorMember implements Member
 		$email,
 		$listId = null
 	) {
-		return $this->isStatus(
+		return $this->gateway->hasStatus(
 			$email,
 			$listId,
 			'unsubscribed'
