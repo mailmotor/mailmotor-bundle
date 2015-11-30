@@ -11,29 +11,29 @@ use MailMotor\Bundle\MailMotorBundle\Component\Gateway;
  */
 final class MailMotor
 {
-	/**
-	 * @var Gateway
-	 */
-	protected $gateway;
+    /**
+     * @var Gateway
+     */
+    protected $gateway;
 
-	/**
-	 * Construct
-	 *
-	 * @param Gateway $gateway
-	 */
-	public function __construct(
-		Gateway $gateway
-	) {
-		$this->gateway = $gateway;
-	}
+    /**
+     * Construct
+     *
+     * @param Gateway $gateway
+     */
+    public function __construct(
+        Gateway $gateway
+    ) {
+        $this->gateway = $gateway;
+    }
 
-	/**
-	 * Get gateway
-	 *
-	 * @return Gateway
-	 */
-	public function getGateway()
-	{
-		return $this->gateway;
-	}
+    /**
+     * Get gateway
+     *
+     * @return Gateway
+     */
+    public function getGateway()
+    {
+        return $this->gateway;
+    }
 }
