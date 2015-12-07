@@ -16,7 +16,7 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/http-kernel": "~2.3",
-        "mailmotor/mailchimp-bundle": "~0.1"
+        "mailmotor/mailchimp-bundle": "~1.0"
     },
     "require-dev": {
         "symfony/framework-bundle": "~2.3"
