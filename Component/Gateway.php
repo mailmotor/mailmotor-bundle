@@ -33,18 +33,19 @@ interface Gateway
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeVars
+     * @param array $mergeFields
+     * @param string $language
      * @return boolean
      */
-    public function subscribe($email, $listId, $mergeVars);
+    public function subscribe($email, $listId, $mergeFields, $language);
 
     /**
      * Unsubscribe
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeVars
+     * @param array $mergeFields
      * @return boolean
      */
-    public function unsubscribe($email, $listId, $mergeVars);
+    public function unsubscribe($email, $listId, $mergeFields);
 }

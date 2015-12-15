@@ -86,18 +86,21 @@ final class MailMotorMember implements Member
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeVars
+     * @param array $mergeFields
+     * @param string $language
      * @return boolean
      */
     public function subscribe(
         $email,
         $listId = null,
-        $mergeVars = null
+        $mergeFields = null,
+        $language = null
     ) {
         return $this->gateway->subscribe(
             $email,
             $listId,
-            $mergeVars
+            $mergeFields,
+            $language
         );
     }
 
@@ -106,18 +109,18 @@ final class MailMotorMember implements Member
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeVars
+     * @param array $mergeFields
      * @return boolean
      */
     public function unsubscribe(
         $email,
         $listId = null,
-        $mergeVars = null
+        $mergeFields = null
     ) {
         return $this->gateway->unsubscribe(
             $email,
             $listId,
-            $mergeVars
+            $mergeFields
         );
     }
 }
