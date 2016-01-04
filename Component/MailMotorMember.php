@@ -12,6 +12,9 @@ use MailMotor\Bundle\MailMotorBundle\Component\Member;
  */
 final class MailMotorMember implements Member
 {
+    const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
+    const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
+
     /**
      * @var Gateway
      */
@@ -59,7 +62,7 @@ final class MailMotorMember implements Member
         return $this->gateway->hasStatus(
             $email,
             $listId,
-            'subscribed'
+            self::MEMBER_STATUS_SUBSCRIBED
         );
     }
 
@@ -77,7 +80,7 @@ final class MailMotorMember implements Member
         return $this->gateway->hasStatus(
             $email,
             $listId,
-            'unsubscribed'
+            self::MEMBER_STATUS_UNSUBSCRIBED
         );
     }
 
