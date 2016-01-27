@@ -30,3 +30,18 @@ In **app/config/parameters.yml**
     mailmotor.list_id:      xxx # enter the default list_id here
 ```
 
+In **app/config/config.yml**
+
+```yaml
+services:
+    mailmotor.factory:
+        class: Backend\Modules\MailMotor\Factory\MailMotorFactory
+        arguments:
+            - "@service_container"
+            - "%mailmotor.mail_engine%"
+    mailmotor:
+        class: MailMotor\Bundle\MailMotorBundle\Component\MailMotor
+        arguments:
+            - "@=service('mailmotor.factory').getGateway()"
+```
+
