@@ -2,8 +2,12 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Component;
 
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use MailMotor\Bundle\MailMotorBundle\Component\MailMotor;
 use MailMotor\Bundle\MailMotorBundle\Component\Member;
+use MailMotor\Bundle\MailMotorBundle\MailMotorMailMotorBundleEvents;
+use MailMotor\Bundle\MailMotorBundle\Event\MailMotorSubscribedEvent;
+use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
 
 /**
  * MailMotor member
@@ -16,6 +20,11 @@ final class MailMotorMember implements Member
     const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
 
     /**
+     * @var EventDispatcherInterface
+     */
+    protected $eventDispatcher;
+
+    /**
      * @var Gateway
      */
     protected $gateway;
@@ -24,11 +33,14 @@ final class MailMotorMember implements Member
      * Construct
      *
      * @param MailMotor $mailMotor
+     * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(
-        MailMotor $mailMotor
+        MailMotor $mailMotor,
+        EventDispatcherInterface $eventDispatcher
     ) {
         $this->gateway = $mailMotor->getGateway();
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -96,15 +108,30 @@ final class MailMotorMember implements Member
     public function subscribe(
         $email,
         $listId = null,
-        $mergeFields = null,
+        $mergeFields = array(),
         $language = null
     ) {
-        return $this->gateway->subscribe(
+        $subscribed = $this->gateway->subscribe(
             $email,
             $listId,
             $mergeFields,
             $language
         );
+
+        if ($subscribed) {
+            // dispatch event
+            $this->eventDispatcher->dispatch(
+                MailMotorMailMotorBundleEvents::SUBSCRIBED,
+                new MailMotorSubscribedEvent(
+                    $email,
+                    $listId,
+                    $mergeFields,
+                    $language
+                )
+            );
+        }
+
+        return $subscribed;
     }
 
     /**
@@ -112,18 +139,28 @@ final class MailMotorMember implements Member
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeFields
      * @return boolean
      */
     public function unsubscribe(
         $email,
-        $listId = null,
-        $mergeFields = null
+        $listId = null
     ) {
-        return $this->gateway->unsubscribe(
+        $unsubscribed = $this->gateway->unsubscribe(
             $email,
-            $listId,
-            $mergeFields
+            $listId
         );
+
+        if ($unsubscribed) {
+            // dispatch event
+            $this->eventDispatcher->dispatch(
+                MailMotorMailMotorBundleEvents::SUBSCRIBED,
+                new MailMotorUnsubscribedEvent(
+                    $email,
+                    $listId
+                )
+            );
+        }
+
+        return $unsubscribed;
     }
 }

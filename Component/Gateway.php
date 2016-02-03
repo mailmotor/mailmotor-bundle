@@ -44,8 +44,7 @@ interface Gateway
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeFields
      * @return boolean
      */
-    public function unsubscribe($email, $listId, $mergeFields);
+    public function unsubscribe($email, $listId);
 }
