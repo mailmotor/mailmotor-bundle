@@ -28,6 +28,8 @@ class MailMotorUnsubscribedEvent extends Event
     protected $mergeFields;
 
     /**
+     * Construct
+     *
      * @param string $email
      * @param string $listId
      * @param array $mergeFields
@@ -43,6 +45,8 @@ class MailMotorUnsubscribedEvent extends Event
     }
 
     /**
+     * Get email
+     *
      * @return string
      */
     public function getEmail()
@@ -51,7 +55,7 @@ class MailMotorUnsubscribedEvent extends Event
     }
 
     /**
-     * Gets the value of listId.
+     * Get listId
      *
      * @return string
      */
@@ -61,7 +65,7 @@ class MailMotorUnsubscribedEvent extends Event
     }
 
     /**
-     * Gets the value of mergeFields.
+     * Get mergeFields
      *
      * @return array
      */
