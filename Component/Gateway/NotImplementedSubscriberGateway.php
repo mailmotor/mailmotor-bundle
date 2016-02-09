@@ -2,7 +2,7 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Component\Gateway;
 
-use MailMotor\Bundle\MailMotorBundle\Component\SubscriberGateway;
+use MailMotor\Bundle\MailMotorBundle\Component\Gateway\SubscriberGateway;
 use MailMotor\Bundle\MailMotorBundle\Component\Exception\NotImplementedException;
 
 /**
