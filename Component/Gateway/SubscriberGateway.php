@@ -1,16 +1,15 @@
 <?php
 
-namespace MailMotor\Bundle\MailMotorBundle\Component;
+namespace MailMotor\Bundle\MailMotorBundle\Component\Gateway;
 
-use MailMotor\Bundle\MailMotorBundle\Component\Gateway;
-use MailMotor\Bundle\MailMotorBundle\Component\NotImplementedException;
+use MailMotor\Bundle\MailMotorBundle\Component\MailMotor;
 
 /**
- * Not Implemented Gateway
+ * Subscriber gateway
  *
  * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
-final class NotImplementedGateway implements Gateway
+interface SubscriberGateway
 {
     /**
      * Get
@@ -22,9 +21,7 @@ final class NotImplementedGateway implements Gateway
     public function get(
         $email,
         $listId = null
-    ) {
-        return $this->throwException();
-    }
+    );
 
     /**
      * Has status
@@ -38,9 +35,7 @@ final class NotImplementedGateway implements Gateway
         $email,
         $listId = null,
         $status
-    ) {
-        $this->throwException();
-    }
+    );
 
     /**
      * Subscribe
@@ -56,9 +51,7 @@ final class NotImplementedGateway implements Gateway
         $listId = null,
         $mergeFields = array(),
         $language = null
-    ) {
-        $this->throwException();
-    }
+    );
 
     /**
      * Unsubscribe
@@ -70,17 +63,5 @@ final class NotImplementedGateway implements Gateway
     public function unsubscribe(
         $email,
         $listId = null
-    ) {
-        $this->throwException();
-    }
-
-    /**
-     * Throw exception
-     *
-     * @return NotImplementedException
-     */
-    protected function throwException()
-    {
-        throw new NotImplementedException('The MailMotor has no active mail-engine gateway');
-    }
+    );
 }
