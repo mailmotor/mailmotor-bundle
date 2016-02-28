@@ -2,38 +2,39 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Component;
 
-use MailMotor\Bundle\MailMotorBundle\Component\Gateway;
-
 /**
  * MailMotor
  *
  * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
-final class MailMotor
+class MailMotor
 {
     /**
-     * @var Gateway
+     * The default list id
+     *
+     * @var string
      */
-    protected $gateway;
+    protected $listId;
 
     /**
      * Construct
      *
-     * @param Gateway $gateway
+     * @param string $listId
      */
     public function __construct(
-        Gateway $gateway
+        $listId
     ) {
-        $this->gateway = $gateway;
+        $this->listId = $listId;
     }
 
     /**
-     * Get gateway
+     * Get list id
      *
-     * @return Gateway
+     * @param string $listId If you want to use a custom list id
+     * @return string
      */
-    public function getGateway()
+    public function getListId($listId = null)
     {
-        return $this->gateway;
+        return ($listId == null) ? $this->listId : $listId;
     }
 }

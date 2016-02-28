@@ -1,10 +1,4 @@
 services:
-    mailmotor.member:
-        class: MailMotor\Bundle\MailMotorBundle\Component\MailMotorMember
-        arguments:
-            - "@mailmotor"
-            - "@event_dispatcher"
-
     # this is our fallback gateway when no mail-engine is selected (at default)
-    mailmotor.not_implemented.gateway:
-        class: MailMotor\Bundle\MailMotorBundle\Component\NotImplementedGateway
+    mailmotor.not_implemented.subscriber.gateway:
+        class: MailMotor\Bundle\MailMotorBundle\Component\Gateway\NotImplementedSubscriberGateway

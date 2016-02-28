@@ -2,19 +2,18 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Component;
 
+use MailMotor\Bundle\MailMotorBundle\Component\Gateway\SubscriberGateway;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use MailMotor\Bundle\MailMotorBundle\Component\MailMotor;
-use MailMotor\Bundle\MailMotorBundle\Component\Member;
 use MailMotor\Bundle\MailMotorBundle\MailMotorMailMotorBundleEvents;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorSubscribedEvent;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
 
 /**
- * MailMotor member
+ * Subscriber
  *
  * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
-final class MailMotorMember implements Member
+class Subscriber
 {
     const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
     const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
@@ -25,21 +24,21 @@ final class MailMotorMember implements Member
     protected $eventDispatcher;
 
     /**
-     * @var Gateway
+     * @var SubscriberGateway
      */
-    protected $gateway;
+    protected $subscriberGateway;
 
     /**
      * Construct
      *
-     * @param MailMotor $mailMotor
+     * @param SubscriberGateway $subscriberGateway
      * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(
-        MailMotor $mailMotor,
+        SubscriberGateway $subscriberGateway,
         EventDispatcherInterface $eventDispatcher
     ) {
-        $this->gateway = $mailMotor->getGateway();
+        $this->subscriberGateway = $subscriberGateway;
         $this->eventDispatcher = $eventDispatcher;
     }
 
@@ -54,7 +53,7 @@ final class MailMotorMember implements Member
         $email,
         $listId = null
     ) {
-        return (bool) $this->gateway->get(
+        return (bool) $this->subscriberGateway->get(
             $email,
             $listId
         );
@@ -71,7 +70,7 @@ final class MailMotorMember implements Member
         $email,
         $listId = null
     ) {
-        return $this->gateway->hasStatus(
+        return $this->subscriberGateway->hasStatus(
             $email,
             $listId,
             self::MEMBER_STATUS_SUBSCRIBED
@@ -89,7 +88,7 @@ final class MailMotorMember implements Member
         $email,
         $listId = null
     ) {
-        return $this->gateway->hasStatus(
+        return $this->subscriberGateway->hasStatus(
             $email,
             $listId,
             self::MEMBER_STATUS_UNSUBSCRIBED
@@ -111,7 +110,7 @@ final class MailMotorMember implements Member
         $mergeFields = array(),
         $language = null
     ) {
-        $subscribed = $this->gateway->subscribe(
+        $subscribed = $this->subscriberGateway->subscribe(
             $email,
             $listId,
             $mergeFields,
@@ -119,7 +118,7 @@ final class MailMotorMember implements Member
         );
 
         if ($subscribed) {
-            // dispatch event
+            // dispatch subscribed event
             $this->eventDispatcher->dispatch(
                 MailMotorMailMotorBundleEvents::SUBSCRIBED,
                 new MailMotorSubscribedEvent(
@@ -145,15 +144,15 @@ final class MailMotorMember implements Member
         $email,
         $listId = null
     ) {
-        $unsubscribed = $this->gateway->unsubscribe(
+        $unsubscribed = $this->subscriberGateway->unsubscribe(
             $email,
             $listId
         );
 
         if ($unsubscribed) {
-            // dispatch event
+            // dispatch unsubscribed event
             $this->eventDispatcher->dispatch(
-                MailMotorMailMotorBundleEvents::SUBSCRIBED,
+                MailMotorMailMotorBundleEvents::UNSUBSCRIBED,
                 new MailMotorUnsubscribedEvent(
                     $email,
                     $listId
