@@ -88,6 +88,8 @@ $language = 'en';
 
 > You can contribute to the community by creating your own bundles for mail engines that we haven't covered yet. For example: CampaignMonitor, Sendy, Yoursendingprovider, ...
 
+**We're using `Crazy` as a (fake) mail engine in our example code.**
+
 *In `app/AppKernel.php`*
 ```php
 public function registerBundles()
