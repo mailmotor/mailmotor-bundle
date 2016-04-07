@@ -7,20 +7,20 @@ Features:
     - Subscribe email to your mailing list.
     - Unsubscribe email from your mailing list.
 
-Currently works for:
+Available mail engines:
 * [MailChimp](https://github.com/mailmotor/mailchimp-bundle)
 
-Used by:
-* [MailMotor module](https://github.com/mailmotor/fork-cms-module-mailmotor) for [Fork CMS](http://www.fork-cms.com)
+Available integrations:
+* [Fork CMS MailMotor module](https://github.com/mailmotor/fork-cms-module-mailmotor)
 
 ## Installation example for MailChimp
 
-*Open your **terminal** and type*
+*Open your `terminal` and type*
 ```bash
 composer require mailmotor/mailchimp-bundle
 ```
 
-*In **app/AppKernel.php***
+*In `app/AppKernel.php`*
 ```php
 public function registerBundles()
 {
@@ -31,7 +31,7 @@ public function registerBundles()
     );
 ```
 
-*In **app/config/parameters.yml***
+*In `app/config/parameters.yml`*
 ```yaml
     mailmotor.mail_engine:  'mailchimp'
     mailmotor.api_key:      xxx # enter your mailchimp api_key here
