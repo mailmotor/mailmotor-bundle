@@ -84,31 +84,36 @@ $language = 'en';
 
 >If you didn't fill in the required fields (mailmotor.mail_engine, mailmotor.api_key and mailmotor.list_id) a `NotImplementedException` is being thrown. So you can try/catch that error and integrate your custom integration. For more integration details, checkout the integration in the Fork CMS MailMotor module - [Subscribe example](https://github.com/mailmotor/fork-cms-module-mailmotor/blob/master/src/Frontend/Modules/MailMotor/Actions/Subscribe.php#L108-L152), [Unsubscribe example](https://github.com/mailmotor/fork-cms-module-mailmotor/blob/master/src/Frontend/Modules/MailMotor/Actions/Unsubscribe.php#L112-L158)
 
-## Installation example for your custom mail engine
+## Creating your own bundle for a mail engine
 
-> You can always create your own CustomBundle for the mail engine of your choice, CampaignMonitor, Sendy, Yoursendingprovider, ...
+> You can contribute to the community by creating your own bundles for mail engines that we haven't covered yet. For example: CampaignMonitor, Sendy, Yoursendingprovider, ...
 
-**In this example I will call the mail engine "crazy".**
-
+*In `app/AppKernel.php`*
 ```php
 public function registerBundles()
 {
     $bundles = array(
         // ...
         new MailMotor\Bundle\MailMotorBundle\MailMotorMailMotorBundle(),
-        new Crazy\Bundle\MailMotorBundle\CrazyMailMotorBundle(),
+        new MailMotor\Bundle\CrazyBundle\MailMotorCrazyBundle(),
     );
 ```
 
-In **app/config/parameters.yml**
-
+*In `app/config/parameters.yml`*
 ```yaml
     mailmotor.mail_engine:  'crazy'
     mailmotor.api_key:      xxx # enter your crazy api_key here
     mailmotor.list_id:      xxx # enter the crazy default list_id here
 ```
 
-Then you just need to recreate the files like in "[mailmotor/mailchimp-bundle](https://github.com/mailmotor/mailchimp-bundle)".
+*Creating the code for the bundle*
+
+1. Copy/paste the latest [mailmotor/mailchimp-bundle](https://github.com/mailmotor/mailchimp-bundle)
+2. Change the namespace everywhere to represent the mail engine "crazy", f.e.: MailMotor\Bundle\CrazyBundle\MailMotorCrazyBundle
+3. Rename the files `/Component/Gateway/MailChimpSubscriberGateway.php`, `/Component/MailChimpMailMotor.php`
+4. In `/Resources/config/services.yml` change the *MailChimp* to *Crazy* and *mailchimp* to *crazy*
+5. Find an open source API and integrate it. First load it in like f.e. `composer install pacely/mailchimp-apiv3` and then add it in the services.yml define mailmotor.crazy.api and add the classname to the external API
+6. Change some code in `Component/CrazyMailMotor` to let it accept the external API and change the code in `Component/Gateway/CrazySubscriberGateway` to let every required method in it work.
 
 ### Tests
 
