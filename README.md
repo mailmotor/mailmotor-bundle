@@ -112,10 +112,10 @@ public function registerBundles()
 
 1. Copy/paste the latest [mailmotor/mailchimp-bundle](https://github.com/mailmotor/mailchimp-bundle)
 2. Change the namespace everywhere to represent the mail engine "crazy", f.e.: MailMotor\Bundle\CrazyBundle\MailMotorCrazyBundle
-3. Rename the files `/Component/Gateway/MailChimpSubscriberGateway.php`, `/Component/MailChimpMailMotor.php`
-4. In `/Resources/config/services.yml` change the *MailChimp* to *Crazy* and *mailchimp* to *crazy*
-5. Find an open source API and integrate it. First load it in like f.e. `composer install pacely/mailchimp-apiv3` and then add it in the services.yml define mailmotor.crazy.api and add the classname to the external API
-6. Change some code in `Component/CrazyMailMotor` to let it accept the external API and change the code in `Component/Gateway/CrazySubscriberGateway` to let every required method in it work.
+3. Rename the file `/Component/Gateway/MailChimpSubscriberGateway.php` to `/Component/Gateway/CrazySubscriberGateway.php` and `/Component/MailChimpMailMotor.php` to `/Component/CrazyMailMotor.php`.
+4. In `/Resources/config/services.yml` change all occurences *MailChimp* to *Crazy* and *mailchimp* to *crazy*
+5. Find an open source API and integrate it. First load it in in your `terminal` like f.e. `composer install pacely/mailchimp-apiv3` and then add it in the services.yml defining `mailmotor.crazy.api` and add the classname to classname of the external API.
+6. Change some code in `Component/CrazyMailMotor` to let it accept the external API and change the code in `Component/Gateway/CrazySubscriberGateway` to let every inherited method work.
 
 ### Tests
 
