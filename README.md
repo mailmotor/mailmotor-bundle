@@ -31,7 +31,7 @@ public function registerBundles()
     );
 ```
 
-*In `app/config/parameters.yml`*
+*In app/config/parameters.yml*
 ```yaml
     mailmotor.mail_engine:  'mailchimp'
     mailmotor.api_key:      xxx # enter your mailchimp api_key here
@@ -80,7 +80,9 @@ $mergeFields = array(
 $language = 'en';
 ```
 
-## Installation example for your MailMotor CustomBundle
+>If you didn't fill in the required fields (mailmotor.mail_engine, mailmotor.api_key and mailmotor.list_id) a `NotImplementedException` is being thrown. So you can try/catch that error and integrate your custom integration. For more integration details, checkout the integration in the Fork CMS MailMotor module - [Subscribe example](https://github.com/mailmotor/fork-cms-module-mailmotor/blob/master/src/Frontend/Modules/MailMotor/Actions/Subscribe.php#L108-L152), [Unsubscribe example](https://github.com/mailmotor/fork-cms-module-mailmotor/blob/master/src/Frontend/Modules/MailMotor/Actions/Unsubscribe.php#L112-L158)
+
+## Installation example for your custom mail engine
 
 > You can always create your own CustomBundle for the mail engine of your choice, CampaignMonitor, Sendy, Yoursendingprovider, ...
 
