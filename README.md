@@ -38,6 +38,8 @@ public function registerBundles()
     mailmotor.list_id:      xxx # enter the mailchimp default list_id here
 ```
 
+> And you're ready to go.
+
 ## Examples
 
 ### Subscribing/Unsubscribing
