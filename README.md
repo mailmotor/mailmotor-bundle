@@ -12,14 +12,13 @@ Current Mail Engines:
 
 > This is how you configure MailChimp
 
-Open your **terminal** and type:
-```
+```bash
+// Open your **terminal** and type:
 composer require mailmotor/mailchimp-bundle
 ```
 
-In **app/AppKernel.php**
-
 ```php
+// In app/AppKernel.php
 public function registerBundles()
 {
     $bundles = array(
@@ -29,14 +28,12 @@ public function registerBundles()
     );
 ```
 
-In **app/config/parameters.yml**
-
 ```yaml
+#In app/config/parameters.yml
     mailmotor.mail_engine:  'mailchimp'
     mailmotor.api_key:      xxx # enter your mailchimp api_key here
     mailmotor.list_id:      xxx # enter the mailchimp default list_id here
 ```
-
 
 ### Subscribing
 
