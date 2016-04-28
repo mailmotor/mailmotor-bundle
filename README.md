@@ -83,9 +83,9 @@ public function registerBundles()
 In **app/config/parameters.yml**
 
 ```yaml
-    mailmotor.mail_engine:  'crazy'
-    mailmotor.api_key:      xxx # enter your crazy api_key here
-    mailmotor.list_id:      xxx # enter the crazy default list_id here
+mailmotor.mail_engine:  'crazy'
+mailmotor.api_key:      xxx # enter your crazy api_key here
+mailmotor.list_id:      xxx # enter the crazy default list_id here
 ```
 
-Then you just need to recreate the files like in "mailmotor/mailchimp-bundle".
+Then you just need to duplicate all files from another mail engine, like f.e.: "mailmotor/mailchimp-bundle" and replace all the logic for your own mail engine.
