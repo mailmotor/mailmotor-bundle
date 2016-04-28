@@ -43,7 +43,7 @@ $this->get('mailmotor.subscriber')->subscribe(
 ```php
 $this->get('mailmotor.subscriber')->unsubscribe(
     $email,
-    $listId // Optional, default listId is in your config parameters
+    $listId // OPTIONAL, default listId is in your config parameters
 );
 ```
 
@@ -52,7 +52,7 @@ $this->get('mailmotor.subscriber')->unsubscribe(
 ```php
 $this->get('mailmotor.subscriber')->exists(
     $email,
-    $listId // Optional, default listId is in your config parameters
+    $listId // OPTIONAL, default listId is in your config parameters
 );
 ```
 
@@ -61,7 +61,7 @@ $this->get('mailmotor.subscriber')->exists(
 ```php
 $this->get('mailmotor.subscriber')->isSubscribed(
     $email,
-    $listId // Optional, default listId is in your config parameters
+    $listId // OPTIONAL, default listId is in your config parameters
 );
 ```
 
