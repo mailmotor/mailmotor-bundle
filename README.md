@@ -2,6 +2,48 @@
 
 This Symfony2 bundle loads in [MailMotor](https://github.com/mailmotor/mailmotor) as a service. So you can subscribe/unsubscribe members to any mailinglist managing API. F.e.: [MailChimp](https://github.com/mailmotor/mailmotor-mailchimp), CampaignMonitor, ...
 
+Read more about:
+* [Examples](#examples)
+* [Installation for MailChimp](#installation-for-mailchimp)
+* [Installation for CustomBundle](#installation-for-custombundle)
+
+## Examples
+
+> Examples for Symfony, but can be used in any framework.
+
+### Subscribing
+
+```php
+// Subscribing has never been this easy!!!
+$this->get('mailmotor.subscriber')->subscribe(
+    $email,
+    $mergeFields,
+    $language,
+    $doubleOptin, // Optional, default = true
+    $listId // Optional, default listId is in your config parameters
+);
+```
+
+```php
+// The variables look like this:
+$email = 'jeroen@siesqo.be';
+$mergeFields = [
+    'FNAME' => 'Jeroen',
+    'LNAME' => 'Desloovere',
+];
+$language = 'nl';
+```
+
+### Unsubscribing
+
+```php
+// Unsubscribing an email is very easy
+$this->get('mailmotor.subscriber')->unsubscribe(
+    $email,
+    $listId // Optional, default listId is in your config parameters
+);
+```
+
 ## Installation for MailChimp
 
 Open your **terminal** and type:
