@@ -77,7 +77,7 @@ try {
     if ($this->get('mailmotor.subscriber')->isSubscribed($email)) {
         // Add error to your form
     }
-// Fallback for when no mail-engine parameters are added
+// Fallback for when no mailmotor parameters are defined
 } catch (NotImplementedException $e) {
     // Do nothing
 }
@@ -90,7 +90,7 @@ if ($noErrors)
             $mergeFields,
             $language
         );
-    // Fallback for when no mail-engine parameters are added
+    // Fallback for when no mailmotor parameters are defined
     } catch (NotImplementedException $e) {
         // Add you own code here to f.e.: send a mail to the admin
     }
@@ -116,7 +116,7 @@ try {
     } else {
         // Add error to your form: "email is not in mailinglist"
     }
-// Fallback for when no mail-engine parameters are added
+// Fallback for when no mailmotor parameters are defined
 } catch (NotImplementedException $e) {
     // Do nothing
 }
@@ -125,7 +125,7 @@ if ($noErrors) {
     try {
         // Unsubscribe the user
         $this->get('mailmotor.subscriber')->unsubscribe($email);
-    // Fallback for when no mail-engine parameters are added
+    // Fallback for when no mailmotor parameters are defined
     } catch (NotImplementedException $e) {
         // We can send a mail to the admin instead
     }
