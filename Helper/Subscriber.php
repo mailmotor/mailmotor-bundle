@@ -114,7 +114,7 @@ final class Subscriber extends MailMotor
         $mergeFields = array(),
         $language = null,
         $doubleOptin = true,
-        $listId = null,
+        $listId = null
     ) {
         $subscribed = $this->subscriberGateway->subscribe(
             $email,
