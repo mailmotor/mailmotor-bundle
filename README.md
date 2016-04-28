@@ -4,12 +4,9 @@
 
 ## Examples
 
-### Configure
-
-> This is how you configure MailChimp
+### Configure (MailChimp)
 
 ```bash
-// Open your **terminal** and type:
 composer require mailmotor/mailchimp-bundle
 ```
 
