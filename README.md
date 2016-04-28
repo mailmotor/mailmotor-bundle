@@ -11,7 +11,6 @@ composer require mailmotor/mailchimp-bundle
 ```
 
 ```php
-// In app/AppKernel.php
 public function registerBundles()
 {
     $bundles = array(
@@ -22,10 +21,9 @@ public function registerBundles()
 ```
 
 ```yaml
-#In app/config/parameters.yml
-    mailmotor.mail_engine:  'mailchimp'
-    mailmotor.api_key:      xxx # enter your mailchimp api_key here
-    mailmotor.list_id:      xxx # enter the mailchimp default list_id here
+mailmotor.mail_engine:  'mailchimp'
+mailmotor.api_key:      xxx # enter your mailchimp api_key here
+mailmotor.list_id:      xxx # enter the mailchimp default list_id here
 ```
 
 ### Subscribing
