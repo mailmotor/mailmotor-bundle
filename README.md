@@ -1,11 +1,16 @@
 # MailMotorBundle
 
-This Symfony2 bundle loads in [MailMotor](https://github.com/mailmotor/mailmotor) as a service. So you can subscribe/unsubscribe members to any mailinglist managing API. F.e.: [MailChimp](https://github.com/mailmotor/mailmotor-mailchimp), CampaignMonitor, ...
+Subscribing/Unsubscribing to your own mailinglist has never been this easy!
+Thanks to this Symfony2 bundle.
+
+Current Mail Engines:
+* [MailChimp](https://github.com/mailmotor/mailmotor-mailchimp)
+* [CampaignMonitor](https://github.com/mailmotor/mailmotor-campaignmonitor) - work in progress
 
 Read more about:
 * [Examples](#examples)
-* [Installation for MailChimp](#installation-for-mailchimp)
-* [Installation for CustomBundle](#installation-for-custombundle)
+* [Installation](#installation)
+* [Extending](#extending)
 
 ## Examples
 
@@ -14,7 +19,6 @@ Read more about:
 ### Subscribing
 
 ```php
-// Subscribing has never been this easy!!!
 $this->get('mailmotor.subscriber')->subscribe(
     $email,         // f.e.: 'jeroen@siesqo.be'
     $mergeFields,   // f.e.: ['FNAME' => 'Jeroen', 'LNAME' => 'Desloovere']
@@ -27,14 +31,15 @@ $this->get('mailmotor.subscriber')->subscribe(
 ### Unsubscribing
 
 ```php
-// Unsubscribing an email is very easy
 $this->get('mailmotor.subscriber')->unsubscribe(
     $email,
     $listId // Optional, default listId is in your config parameters
 );
 ```
 
-## Installation for MailChimp
+## Installation
+
+### For MailChimp
 
 Open your **terminal** and type:
 ```
@@ -61,7 +66,9 @@ In **app/config/parameters.yml**
     mailmotor.list_id:      xxx # enter the mailchimp default list_id here
 ```
 
-## Installation for CustomBundle
+## Extending
+
+### Installation for CustomBundle
 
 > You can always create your own MailEngineBundle
 
