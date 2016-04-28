@@ -47,13 +47,29 @@ $this->get('mailmotor.subscriber')->unsubscribe(
 );
 ```
 
+### Exists
+
+```php
+$this->get('mailmotor.subscriber')->exists(
+    $email,
+    $listId // Optional, default listId is in your config parameters
+);
+```
+
+### Is subscribed
+
+```php
+$this->get('mailmotor.subscriber')->isSubscribed(
+    $email,
+    $listId // Optional, default listId is in your config parameters
+);
+```
+
 ## Extending
 
-### Installation for CustomBundle
+### Creating a bundle for another mail engine.
 
-> You can always create your own MailEngineBundle
-
-F.e.: You want to use a (fake) mail engine called "Crazy".
+F.e.: You want to use a mail engine called "Crazy".
 
 ```php
 public function registerBundles()
