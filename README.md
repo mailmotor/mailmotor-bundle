@@ -2,10 +2,6 @@
 
 > Subscribing/Unsubscribing to your own mailinglist has never been this easy! Thanks to this Symfony2 bundle.
 
-Current Mail Engines:
-* [MailChimp](https://github.com/mailmotor/mailmotor-mailchimp)
-* [CampaignMonitor](https://github.com/mailmotor/mailmotor-campaignmonitor) - work in progress
-
 ## Examples
 
 ### Configure
