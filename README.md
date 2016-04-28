@@ -16,22 +16,12 @@ Read more about:
 ```php
 // Subscribing has never been this easy!!!
 $this->get('mailmotor.subscriber')->subscribe(
-    $email,
-    $mergeFields,
-    $language,
-    $doubleOptin, // Optional, default = true
-    $listId // Optional, default listId is in your config parameters
+    $email,         // f.e.: 'jeroen@siesqo.be'
+    $mergeFields,   // f.e.: ['FNAME' => 'Jeroen', 'LNAME' => 'Desloovere']
+    $language,      // f.e.: 'nl'
+    $doubleOptin,   // OPTIONAL, default = true
+    $listId         // OPTIONAL, default listId is in your config parameters
 );
-```
-
-```php
-// The variables look like this:
-$email = 'jeroen@siesqo.be';
-$mergeFields = [
-    'FNAME' => 'Jeroen',
-    'LNAME' => 'Desloovere',
-];
-$language = 'nl';
 ```
 
 ### Unsubscribing
