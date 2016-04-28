@@ -106,7 +106,7 @@ use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
 $email = 'jeroen@siesqo.be';
 
 try {
-    // email exists
+    // Email exists
     if ($this->get('mailmotor.subscriber')->exists($email)) {
         // User is already unsubscribed
         if ($this->get('mailmotor.subscriber')->isUnsubscribed($email)) {
