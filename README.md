@@ -65,6 +65,73 @@ $this->get('mailmotor.subscriber')->isSubscribed(
 );
 ```
 
+### Full example for subscribing
+
+```php
+use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
+
+// Don't forget to add validation to your $email
+$email = 'jeroen@siesqo.be';
+
+try {
+    if ($this->get('mailmotor.subscriber')->isSubscribed($email)) {
+        // Add error to your form
+    }
+// Fallback for when no mail-engine parameters are added
+} catch (NotImplementedException $e) {
+    // Do nothing
+}
+
+if ($noErrors)
+    try {
+        // Subscribe the user to our default group
+        $this->get('mailmotor.subscriber')->subscribe(
+            $email,
+            $mergeFields,
+            $language
+        );
+    // Fallback for when no mail-engine parameters are added
+    } catch (NotImplementedException $e) {
+        // Add you own code here to f.e.: send a mail to the admin
+    }
+}
+```
+
+### Full example for unsubscribing
+
+```php
+use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
+
+// Don't forget to add validation to your $email
+$email = 'jeroen@siesqo.be';
+
+try {
+    // email exists
+    if ($this->get('mailmotor.subscriber')->exists($email)) {
+        // User is already unsubscribed
+        if ($this->get('mailmotor.subscriber')->isUnsubscribed($email)) {
+            // Add error to your form: "User is already unsubscribed"
+        }
+    // Email not exists
+    } else {
+        // Add error to your form: "email is not in mailinglist"
+    }
+// Fallback for when no mail-engine parameters are added
+} catch (NotImplementedException $e) {
+    // Do nothing
+}
+
+if ($noErrors) {
+    try {
+        // Unsubscribe the user
+        $this->get('mailmotor.subscriber')->unsubscribe($email);
+    // Fallback for when no mail-engine parameters are added
+    } catch (NotImplementedException $e) {
+        // We can send a mail to the admin instead
+    }
+}
+```
+
 ## Extending
 
 ### Creating a bundle for another mail engine.
