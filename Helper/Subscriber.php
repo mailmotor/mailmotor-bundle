@@ -103,18 +103,18 @@ final class Subscriber extends MailMotor
      * Subscribe
      *
      * @param string $email
-     * @param string $listId
      * @param array $mergeFields
      * @param string $language
      * @param boolean $doubleOptin Members need to validate their emailAddress before they get added to the list
+     * @param string $listId
      * @return boolean
      */
     public function subscribe(
         $email,
-        $listId = null,
         $mergeFields = array(),
         $language = null,
-        $doubleOptin = true
+        $doubleOptin = true,
+        $listId = null,
     ) {
         $subscribed = $this->subscriberGateway->subscribe(
             $email,
