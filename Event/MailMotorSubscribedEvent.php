@@ -13,6 +13,11 @@ use Symfony\Component\EventDispatcher\Event;
 class MailMotorSubscribedEvent extends Event
 {
     /**
+     * @var boolean
+     */
+    protected $hasDoubleOptin;
+
+    /**
      * @var string
      */
     protected $email;
@@ -39,17 +44,20 @@ class MailMotorSubscribedEvent extends Event
      * @param string $listId
      * @param array $mergeFields
      * @param string $language
+     * @param boolean $hasDoubleOptin
      */
     public function __construct(
         $email,
-        $listId = null,
-        $mergeFields = array(),
-        $language = null
+        $listId,
+        $mergeFields,
+        $language,
+        $hasDoubleOptin
     ) {
         $this->email = $email;
         $this->listId = $listId;
         $this->mergeFields = $mergeFields;
         $this->language = $language;
+        $this->hasDoubleOptin = $hasDoubleOptin;
     }
 
     /**
@@ -90,5 +98,15 @@ class MailMotorSubscribedEvent extends Event
     public function getMergeFields()
     {
         return $this->mergeFields;
+    }
+
+    /**
+     * Has double optin
+     *
+     * @return boolean
+     */
+    public function hasDoubleOptin()
+    {
+        return $this->hasDoubleOptin;
     }
 }

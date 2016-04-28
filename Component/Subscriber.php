@@ -9,7 +9,7 @@ use MailMotor\Bundle\MailMotorBundle\Event\MailMotorSubscribedEvent;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
 
 /**
- * Subscriber
+ * Subscriber - this is the class that will be used in the web app.
  *
  * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
@@ -102,19 +102,22 @@ class Subscriber
      * @param string $listId
      * @param array $mergeFields
      * @param string $language
+     * @param boolean $doubleOptin Members need to validate their emailAddress before they get added to the list
      * @return boolean
      */
     public function subscribe(
         $email,
         $listId = null,
         $mergeFields = array(),
-        $language = null
+        $language = null,
+        $doubleOptin = true
     ) {
         $subscribed = $this->subscriberGateway->subscribe(
             $email,
             $listId,
             $mergeFields,
-            $language
+            $language,
+            $doubleOptin
         );
 
         if ($subscribed) {
@@ -125,7 +128,8 @@ class Subscriber
                     $email,
                     $listId,
                     $mergeFields,
-                    $language
+                    $language,
+                    $doubleOptin
                 )
             );
         }
