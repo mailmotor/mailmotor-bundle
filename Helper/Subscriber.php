@@ -1,9 +1,10 @@
 <?php
 
-namespace MailMotor\Bundle\MailMotorBundle\Component;
+namespace MailMotor\Bundle\MailMotorBundle\Helper;
 
-use MailMotor\Bundle\MailMotorBundle\Component\Gateway\SubscriberGateway;
+use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use MailMotor\Bundle\MailMotorBundle\MailMotor;
 use MailMotor\Bundle\MailMotorBundle\MailMotorMailMotorBundleEvents;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorSubscribedEvent;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
@@ -13,7 +14,7 @@ use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
  *
  * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
-class Subscriber
+final class Subscriber extends MailMotor
 {
     const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
     const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
@@ -33,11 +34,14 @@ class Subscriber
      *
      * @param SubscriberGateway $subscriberGateway
      * @param EventDispatcherInterface $eventDispatcher
+     * @param string $listId
      */
     public function __construct(
         SubscriberGateway $subscriberGateway,
-        EventDispatcherInterface $eventDispatcher
+        EventDispatcherInterface $eventDispatcher,
+        $listId
     ) {
+        parent::__construct($listId);
         $this->subscriberGateway = $subscriberGateway;
         $this->eventDispatcher = $eventDispatcher;
     }
@@ -55,7 +59,7 @@ class Subscriber
     ) {
         return (bool) $this->subscriberGateway->get(
             $email,
-            $listId
+            $this->getListId($listId)
         );
     }
 
@@ -72,7 +76,7 @@ class Subscriber
     ) {
         return $this->subscriberGateway->hasStatus(
             $email,
-            $listId,
+            $this->getListId($listId),
             self::MEMBER_STATUS_SUBSCRIBED
         );
     }
@@ -90,7 +94,7 @@ class Subscriber
     ) {
         return $this->subscriberGateway->hasStatus(
             $email,
-            $listId,
+            $this->getListId($listId),
             self::MEMBER_STATUS_UNSUBSCRIBED
         );
     }
@@ -114,7 +118,7 @@ class Subscriber
     ) {
         $subscribed = $this->subscriberGateway->subscribe(
             $email,
-            $listId,
+            $this->getListId($listId),
             $mergeFields,
             $language,
             $doubleOptin
@@ -126,7 +130,7 @@ class Subscriber
                 MailMotorMailMotorBundleEvents::SUBSCRIBED,
                 new MailMotorSubscribedEvent(
                     $email,
-                    $listId,
+                    $this->getListId($listId),
                     $mergeFields,
                     $language,
                     $doubleOptin
@@ -150,7 +154,7 @@ class Subscriber
     ) {
         $unsubscribed = $this->subscriberGateway->unsubscribe(
             $email,
-            $listId
+            $this->getListId($listId)
         );
 
         if ($unsubscribed) {
@@ -159,7 +163,7 @@ class Subscriber
                 MailMotorMailMotorBundleEvents::UNSUBSCRIBED,
                 new MailMotorUnsubscribedEvent(
                     $email,
-                    $listId
+                    $this->getListId($listId)
                 )
             );
         }

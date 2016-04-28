@@ -1,6 +1,6 @@
 <?php
 
-namespace MailMotor\Bundle\MailMotorBundle\Component;
+namespace MailMotor\Bundle\MailMotorBundle;
 
 /**
  * MailMotor

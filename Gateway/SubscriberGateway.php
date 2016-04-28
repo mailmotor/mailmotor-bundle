@@ -1,8 +1,8 @@
 <?php
 
-namespace MailMotor\Bundle\MailMotorBundle\Component\Gateway;
+namespace MailMotor\Bundle\MailMotorBundle\Gateway;
 
-use MailMotor\Bundle\MailMotorBundle\Component\MailMotor;
+use MailMotor\Bundle\MailMotorBundle\MailMotor;
 
 /**
  * Subscriber gateway
@@ -20,7 +20,7 @@ interface SubscriberGateway
      */
     public function get(
         $email,
-        $listId = null
+        $listId
     );
 
     /**
@@ -33,7 +33,7 @@ interface SubscriberGateway
      */
     public function hasStatus(
         $email,
-        $listId = null,
+        $listId,
         $status
     );
 
@@ -49,10 +49,10 @@ interface SubscriberGateway
      */
     public function subscribe(
         $email,
-        $listId = null,
-        $mergeFields = array(),
-        $language = null,
-        $doubleOptin = true
+        $listId,
+        $mergeFields,
+        $language,
+        $doubleOptin
     );
 
     /**
@@ -64,6 +64,6 @@ interface SubscriberGateway
      */
     public function unsubscribe(
         $email,
-        $listId = null
+        $listId
     );
 }

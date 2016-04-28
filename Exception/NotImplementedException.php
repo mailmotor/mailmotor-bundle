@@ -1,6 +1,6 @@
 <?php
 
-namespace MailMotor\Bundle\MailMotorBundle\Component\Exception;
+namespace MailMotor\Bundle\MailMotorBundle\Exception;
 
 /**
  * Not implemented exception

@@ -1,18 +1,19 @@
 services:
-    # factory
+    # Helper for (un)subscribing
+    mailmotor.subscriber:
+        class: MailMotor\Bundle\MailMotorBundle\Helper\Subscriber
+        arguments:
+            - "@=service('mailmotor.factory').getSubscriberGateway()"
+            - "@event_dispatcher"
+            - "%mailmotor.list_id%"
+
+    # Factories
     mailmotor.factory:
         class: MailMotor\Bundle\MailMotorBundle\Factory\MailMotorFactory
         arguments:
             - "@service_container"
             - "%mailmotor.mail_engine%"
 
-    # gateways
-    mailmotor.subscriber:
-        class: MailMotor\Bundle\MailMotorBundle\Component\Subscriber
-        arguments:
-            - "@=service('mailmotor.factory').getSubscriberGateway()"
-            - "@event_dispatcher"
-
-    # this is our fallback gateway when no mail-engine is selected (at default)
+    # Fallback gateway when no mail-engine is selected (at default)
     mailmotor.not_implemented.subscriber.gateway:
-        class: MailMotor\Bundle\MailMotorBundle\Component\Gateway\NotImplementedSubscriberGateway
+        class: MailMotor\Bundle\MailMotorBundle\Gateway\NotImplementedSubscriberGateway

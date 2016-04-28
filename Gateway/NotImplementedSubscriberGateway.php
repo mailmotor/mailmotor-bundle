@@ -1,9 +1,9 @@
 <?php
 
-namespace MailMotor\Bundle\MailMotorBundle\Component\Gateway;
+namespace MailMotor\Bundle\MailMotorBundle\Gateway;
 
-use MailMotor\Bundle\MailMotorBundle\Component\Gateway\SubscriberGateway;
-use MailMotor\Bundle\MailMotorBundle\Component\Exception\NotImplementedException;
+use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
+use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
 
 /**
  * Not Implemented Subscriber Gateway
