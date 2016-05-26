@@ -24,6 +24,16 @@ interface SubscriberGateway
     );
 
     /**
+     * Get interests
+     *
+     * @param string $listId
+     * @return array
+     */
+    public function getInterests(
+        $listId
+    );
+
+    /**
      * Has status
      *
      * @param string $email
@@ -42,16 +52,18 @@ interface SubscriberGateway
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeFields
      * @param string $language
+     * @param array $mergeFields
+     * @param array $interests
      * @param boolean $doubleOptin Members need to validate their emailAddress before they get added to the list
      * @return boolean
      */
     public function subscribe(
         $email,
         $listId,
-        $mergeFields,
         $language,
+        $mergeFields,
+        $interests,
         $doubleOptin
     );
 

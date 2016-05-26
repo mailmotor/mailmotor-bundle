@@ -38,25 +38,33 @@ class MailMotorSubscribedEvent extends Event
     protected $mergeFields;
 
     /**
+     * @var array
+     */
+    protected $interests;
+
+    /**
      * Construct
      *
      * @param string $email
      * @param string $listId
-     * @param array $mergeFields
      * @param string $language
+     * @param array $mergeFields
+     * @param array $interests
      * @param boolean $hasDoubleOptin
      */
     public function __construct(
         $email,
         $listId,
-        $mergeFields,
         $language,
+        $mergeFields,
+        $interests,
         $hasDoubleOptin
     ) {
         $this->email = $email;
         $this->listId = $listId;
-        $this->mergeFields = $mergeFields;
         $this->language = $language;
+        $this->mergeFields = $mergeFields;
+        $this->interests = $interests;
         $this->hasDoubleOptin = $hasDoubleOptin;
     }
 
@@ -68,6 +76,16 @@ class MailMotorSubscribedEvent extends Event
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Get interests
+     *
+     * @return array
+     */
+    public function getInterests()
+    {
+        return $this->interests;
     }
 
     /**

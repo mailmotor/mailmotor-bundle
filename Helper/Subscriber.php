@@ -64,6 +64,37 @@ final class Subscriber extends MailMotor
     }
 
     /**
+     * Get interests
+     *
+     * @param string $listId
+     * @return array
+     */
+    public function getInterests(
+        $listId = null
+    ) {
+        return (array) $this->subscriberGateway->getInterests(
+            $this->getListId($listId)
+        );
+    }
+
+    /**
+     * Get interests for category id
+     *
+     * @param string $interestCategoryId
+     * @param string $listId
+     * @return array
+     */
+    public function getInterestsForCategoryId(
+        $interestCategoryId,
+        $listId = null
+    ) {
+        return (array) $this->subscriberGateway->getInterestsForCategoryId(
+            $interestCategoryId,
+            $this->getListId($listId)
+        );
+    }
+
+    /**
      * Is subscribed
      *
      * @param string $email
@@ -111,16 +142,18 @@ final class Subscriber extends MailMotor
      */
     public function subscribe(
         $email,
-        $mergeFields = array(),
         $language = null,
+        $mergeFields = array(),
+        $interests = array(),
         $doubleOptin = true,
         $listId = null
     ) {
         $subscribed = $this->subscriberGateway->subscribe(
             $email,
             $this->getListId($listId),
-            $mergeFields,
             $language,
+            $mergeFields,
+            $interests,
             $doubleOptin
         );
 
@@ -131,8 +164,9 @@ final class Subscriber extends MailMotor
                 new MailMotorSubscribedEvent(
                     $email,
                     $this->getListId($listId),
-                    $mergeFields,
                     $language,
+                    $mergeFields,
+                    $interests,
                     $doubleOptin
                 )
             );
