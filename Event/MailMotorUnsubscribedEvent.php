@@ -12,6 +12,8 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class MailMotorUnsubscribedEvent extends Event
 {
+    const EVENT_NAME = 'mail_motor_event.unsubscribed';
+
     /**
      * @var string
      */
