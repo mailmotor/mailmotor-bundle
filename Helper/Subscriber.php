@@ -5,7 +5,6 @@ namespace MailMotor\Bundle\MailMotorBundle\Helper;
 use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use MailMotor\Bundle\MailMotorBundle\MailMotor;
-use MailMotor\Bundle\MailMotorBundle\MailMotorMailMotorBundleEvents;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorSubscribedEvent;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
 
@@ -161,7 +160,7 @@ final class Subscriber extends MailMotor
         if ($subscribed) {
             // dispatch subscribed event
             $this->eventDispatcher->dispatch(
-                MailMotorMailMotorBundleEvents::SUBSCRIBED,
+                MailMotorSubscribedEvent::EVENT_NAME,
                 new MailMotorSubscribedEvent(
                     $email,
                     $this->getListId($listId),
@@ -195,7 +194,7 @@ final class Subscriber extends MailMotor
         if ($unsubscribed) {
             // dispatch unsubscribed event
             $this->eventDispatcher->dispatch(
-                MailMotorMailMotorBundleEvents::UNSUBSCRIBED,
+                MailMotorUnsubscribedEvent::EVENT_NAME,
                 new MailMotorUnsubscribedEvent(
                     $email,
                     $this->getListId($listId)
