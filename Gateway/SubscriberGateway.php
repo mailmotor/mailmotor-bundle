@@ -12,7 +12,7 @@ use MailMotor\Bundle\MailMotorBundle\MailMotor;
 interface SubscriberGateway
 {
     /**
-     * Get
+     * Exists
      *
      * @param string $email
      * @param string $listId
