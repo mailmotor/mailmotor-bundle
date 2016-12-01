@@ -13,13 +13,13 @@ use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
 final class NotImplementedSubscriberGateway implements SubscriberGateway
 {
     /**
-     * Get
+     * Exists
      *
      * @param string $email
      * @param string $listId
      * @return array
      */
-    public function get(
+    public function exists(
         $email,
         $listId = null
     ) {
