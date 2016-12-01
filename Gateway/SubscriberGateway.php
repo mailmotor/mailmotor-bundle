@@ -16,9 +16,9 @@ interface SubscriberGateway
      *
      * @param string $email
      * @param string $listId
-     * @return array
+     * @return boolean
      */
-    public function get(
+    public function exists(
         $email,
         $listId
     );

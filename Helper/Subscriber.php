@@ -56,7 +56,7 @@ final class Subscriber extends MailMotor
         $email,
         $listId = null
     ) {
-        return (bool) $this->subscriberGateway->get(
+        return (bool) $this->subscriberGateway->exists(
             $email,
             $this->getListId($listId)
         );
