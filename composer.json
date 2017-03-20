@@ -1,8 +1,8 @@
 {
     "name": "mailmotor/mailmotor-bundle",
     "type": "library",
-    "description": "This Symfony2 bundle loads in MailMotor as a service. So you can subscribe/unsubscribe members to any mailinglist managing API. F.e.: MailChimp, CampaignMonitor, ...",
-    "keywords": ["symfony2", "bundle", "php"],
+    "description": "This Symfony bundle loads in MailMotor as a service. So you can subscribe/unsubscribe members to any mailinglist managing API. F.e.: MailChimp, CampaignMonitor, ...",
+    "keywords": ["symfony", "bundle", "php"],
     "homepage": "https://github.com/mailmotor/mailmotor-bundle",
     "license": "MIT",
     "authors": [
@@ -14,11 +14,11 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "symfony/http-kernel": "~2.3"
+        "php": ">=5.3.3|^7.0",
+        "symfony/http-kernel": "^2.3|^3.0"
     },
     "require-dev": {
-        "symfony/framework-bundle": "~2.3"
+        "symfony/framework-bundle": "^2.3|^3.0"
     },
     "autoload": {
         "psr-4": { "MailMotor\\Bundle\\MailMotorBundle\\": "" }

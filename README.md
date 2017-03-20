@@ -1,6 +1,6 @@
 # MailMotorBundle
 
-> Subscribing/Unsubscribing to your own mailinglist has never been this easy! Thanks to this Symfony2 bundle.
+> Subscribing/Unsubscribing to your own mailinglist has never been this easy! Thanks to this Symfony bundle.
 
 ## Examples
 
