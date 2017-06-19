@@ -18,7 +18,7 @@ class SubscriberGatewayManager
         $this->subscriberGateways[$alias] = $transport;
     }
 
-    public function getSubscriberGateway($alias): SubscriberGateway
+    public function getSubscriberGateway(string $alias): SubscriberGateway
     {
         if (array_key_exists($alias, $this->subscriberGateways)) {
             return $this->subscriberGateways[$alias];
