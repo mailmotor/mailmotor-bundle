@@ -2,8 +2,6 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Manager;
 
-use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
-
 class SubscriberGatewayManager
 {
     /** @var array */
