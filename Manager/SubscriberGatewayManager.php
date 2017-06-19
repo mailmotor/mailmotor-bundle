@@ -6,6 +6,7 @@ use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
 
 class SubscriberGatewayManager
 {
+    /** @var array */
     private $subscriberGateways;
 
     public function __construct()
