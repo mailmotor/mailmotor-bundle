@@ -2,6 +2,8 @@
 
 namespace MailMotor\Bundle\MailMotorBundle;
 
+use MailMotor\Bundle\MailMotorBundle\DependencyInjection\Compiler\SubscriberGatewayPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -11,4 +13,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class MailMotorMailMotorBundle extends Bundle
 {
+    public function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new SubscriberGatewayPass());
+    }
 }
