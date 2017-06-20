@@ -2,6 +2,7 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Factory;
 
+use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 /**
@@ -38,7 +39,7 @@ class MailMotorFactory
     /**
      * Get subscriber gateway
      *
-     * @return Gateway
+     * @return SubscriberGateway
      */
     public function getSubscriberGateway()
     {

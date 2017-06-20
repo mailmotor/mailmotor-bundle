@@ -14,6 +14,12 @@ services:
             - "@service_container"
             - "%mailmotor.mail_engine%"
 
+    # Manager
+    mailmotor.manager.subscriber_gateway:
+        class: MailMotor\Bundle\MailMotorBundle\Manager\SubscriberGatewayManager
+
     # Fallback gateway when no mail-engine is selected (at default)
     mailmotor.not_implemented.subscriber.gateway:
         class: MailMotor\Bundle\MailMotorBundle\Gateway\NotImplementedSubscriberGateway
+        tags:
+            - { name: mailmotor.subscriber_gateway, alias: not_implemented }
