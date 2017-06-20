@@ -5,7 +5,7 @@ namespace MailMotor\Bundle\MailMotorBundle\Exception;
 /**
  * Not implemented exception
  *
- * @author Jeroen Desloovere <jeroen@siesqo.be>
+ * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
 class NotImplementedException extends \Exception
 {

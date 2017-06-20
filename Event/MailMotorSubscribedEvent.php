@@ -8,59 +8,37 @@ use Symfony\Component\EventDispatcher\Event;
  * This class is in fact an immutable event class holding all the data
  * that could be needed by event subscribers on the MailMotorSubscribedEvent
  *
- * @author Jeroen Desloovere <jeroen@siesqo.be>
+ * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
 class MailMotorSubscribedEvent extends Event
 {
     const EVENT_NAME = 'mail_motor_event.subscribed';
 
-    /**
-     * @var boolean
-     */
+    /** @var boolean */
     protected $hasDoubleOptin;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $email;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $language;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $listId;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $mergeFields;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $interests;
 
-    /**
-     * Construct
-     *
-     * @param string $email
-     * @param string $listId
-     * @param string $language
-     * @param array $mergeFields
-     * @param array $interests
-     * @param boolean $hasDoubleOptin
-     */
     public function __construct(
-        $email,
-        $listId,
-        $language,
-        $mergeFields,
-        $interests,
-        $hasDoubleOptin
+        string $email,
+        string $listId,
+        string $language,
+        array $mergeFields,
+        array $interests,
+        bool $hasDoubleOptin
     ) {
         $this->email = $email;
         $this->listId = $listId;
@@ -70,62 +48,32 @@ class MailMotorSubscribedEvent extends Event
         $this->hasDoubleOptin = $hasDoubleOptin;
     }
 
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * Get interests
-     *
-     * @return array
-     */
-    public function getInterests()
+    public function getInterests(): array
     {
         return $this->interests;
     }
 
-    /**
-     * Get language
-     *
-     * @return string
-     */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->language;
     }
 
-    /**
-     * Get listId
-     *
-     * @return string
-     */
-    public function getListId()
+    public function getListId(): string
     {
         return $this->listId;
     }
 
-    /**
-     * Get mergeFields
-     *
-     * @return array
-     */
-    public function getMergeFields()
+    public function getMergeFields(): array
     {
         return $this->mergeFields;
     }
 
-    /**
-     * Has double optin
-     *
-     * @return boolean
-     */
-    public function hasDoubleOptin()
+    public function hasDoubleOptin(): bool
     {
         return $this->hasDoubleOptin;
     }

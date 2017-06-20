@@ -2,8 +2,6 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Gateway;
 
-use MailMotor\Bundle\MailMotorBundle\MailMotor;
-
 /**
  * Subscriber gateway
  *
@@ -11,41 +9,13 @@ use MailMotor\Bundle\MailMotorBundle\MailMotor;
  */
 interface SubscriberGateway
 {
-    /**
-     * Exists
-     *
-     * @param string $email
-     * @param string $listId
-     * @return boolean
-     */
-    public function exists(
-        $email,
-        $listId
-    );
+    public function exists(string $email, string $listId): bool;
 
-    /**
-     * Get interests
-     *
-     * @param string $listId
-     * @return array
-     */
-    public function getInterests(
-        $listId
-    );
+    public function getInterests(string $listId): array;
 
-    /**
-     * Has status
-     *
-     * @param string $email
-     * @param string $listId
-     * @param string $status
-     * @return boolean
-     */
-    public function hasStatus(
-        $email,
-        $listId,
-        $status
-    );
+    public function hasStatus(string $email, string $listId, string $status): bool;
+
+    public function ping(string $listId): bool;
 
     /**
      * Subscribe
@@ -55,27 +25,17 @@ interface SubscriberGateway
      * @param string $language
      * @param array $mergeFields
      * @param array $interests The array is like: ['9AS489SQF' => true, '4SDF8S9DF1' => false]
-     * @param boolean $doubleOptin Members need to validate their emailAddress before they get added to the list
+     * @param bool $doubleOptin Members need to validate their emailAddress before they get added to the list
      * @return boolean
      */
     public function subscribe(
-        $email,
-        $listId,
-        $language,
-        $mergeFields,
-        $interests,
-        $doubleOptin
-    );
+        string $email,
+        string $listId,
+        string $language,
+        array $mergeFields,
+        array $interests,
+        bool $doubleOptin
+    ): bool;
 
-    /**
-     * Unsubscribe
-     *
-     * @param string $email
-     * @param string $listId
-     * @return boolean
-     */
-    public function unsubscribe(
-        $email,
-        $listId
-    );
+    public function unsubscribe(string $email, string $listId): bool;
 }

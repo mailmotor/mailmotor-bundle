@@ -15,78 +15,42 @@ use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
  */
 final class Subscriber extends MailMotor
 {
-    const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
-    const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
+    public const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
+    public const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
 
-    /**
-     * @var EventDispatcherInterface
-     */
+    /** @var EventDispatcherInterface */
     protected $eventDispatcher;
 
-    /**
-     * @var SubscriberGateway
-     */
+    /** @var SubscriberGateway */
     protected $subscriberGateway;
 
-    /**
-     * Construct
-     *
-     * @param SubscriberGateway $subscriberGateway
-     * @param EventDispatcherInterface $eventDispatcher
-     * @param string $listId
-     */
     public function __construct(
         SubscriberGateway $subscriberGateway,
         EventDispatcherInterface $eventDispatcher,
-        $listId
+        string $listId = null
     ) {
         parent::__construct($listId);
         $this->subscriberGateway = $subscriberGateway;
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    /**
-     * Exists
-     *
-     * @param string $email
-     * @param string $listId
-     * @return boolean
-     */
-    public function exists(
-        $email,
-        $listId = null
-    ) {
+    public function exists(string $email, string $listId = null): bool
+    {
         return (bool) $this->subscriberGateway->exists(
             $email,
             $this->getListId($listId)
         );
     }
 
-    /**
-     * Get interests
-     *
-     * @param string $listId
-     * @return array
-     */
-    public function getInterests(
-        $listId = null
-    ) {
+    public function getInterests(string $listId = null): array
+    {
         return (array) $this->subscriberGateway->getInterests(
             $this->getListId($listId)
         );
     }
 
-    /**
-     * Is subscribed
-     *
-     * @param string $email
-     * @param string $listId
-     * @return boolean
-     */
-    public function isSubscribed(
-        $email,
-        $listId = null
-    ) {
+    public function isSubscribed(string $email, string $listId = null): bool
+    {
         return $this->subscriberGateway->hasStatus(
             $email,
             $this->getListId($listId),
@@ -94,22 +58,18 @@ final class Subscriber extends MailMotor
         );
     }
 
-    /**
-     * Is unsubscribed
-     *
-     * @param string $email
-     * @param string $listId
-     * @return boolean
-     */
-    public function isUnsubscribed(
-        $email,
-        $listId = null
-    ) {
+    public function isUnsubscribed(string $email, string $listId = null): bool
+    {
         return $this->subscriberGateway->hasStatus(
             $email,
             $this->getListId($listId),
             self::MEMBER_STATUS_UNSUBSCRIBED
         );
+    }
+
+    public function ping(): bool
+    {
+        return $this->subscriberGateway->ping($this->getListId());
     }
 
     /**
@@ -119,18 +79,18 @@ final class Subscriber extends MailMotor
      * @param string $language
      * @param array $mergeFields
      * @param array $interests The array is like: ['9AS489SQF' => true, '4SDF8S9DF1' => false]
-     * @param boolean $doubleOptin Members need to validate their emailAddress before they get added to the list
+     * @param bool $doubleOptin Members need to validate their emailAddress before they get added to the list
      * @param string $listId
      * @return boolean
      */
     public function subscribe(
-        $email,
-        $language = null,
-        $mergeFields = array(),
-        $interests = array(),
-        $doubleOptin = true,
-        $listId = null
-    ) {
+        string $email,
+        string $language = null,
+        array $mergeFields = array(),
+        array $interests = array(),
+        bool $doubleOptin = true,
+        string $listId = null
+    ): bool {
         $subscribed = $this->subscriberGateway->subscribe(
             $email,
             $this->getListId($listId),
@@ -158,17 +118,8 @@ final class Subscriber extends MailMotor
         return $subscribed;
     }
 
-    /**
-     * Unsubscribe
-     *
-     * @param string $email
-     * @param string $listId
-     * @return boolean
-     */
-    public function unsubscribe(
-        $email,
-        $listId = null
-    ) {
+    public function unsubscribe(string $email, string $listId = null): bool
+    {
         $unsubscribed = $this->subscriberGateway->unsubscribe(
             $email,
             $this->getListId($listId)

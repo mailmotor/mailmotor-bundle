@@ -8,70 +8,42 @@ use Symfony\Component\EventDispatcher\Event;
  * This class is in fact an immutable event class holding all the data
  * that could be needed by event subscribers on the MailMotorUnsubscribedEvent
  *
- * @author Jeroen Desloovere <jeroen@siesqo.be>
+ * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
 class MailMotorUnsubscribedEvent extends Event
 {
     const EVENT_NAME = 'mail_motor_event.unsubscribed';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $email;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $listId;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $mergeFields;
 
-    /**
-     * Construct
-     *
-     * @param string $email
-     * @param string $listId
-     * @param array $mergeFields
-     */
     public function __construct(
-        $email,
-        $listId = null,
-        $mergeFields = array()
+        string $email,
+        string $listId = null,
+        array $mergeFields = array()
     ) {
         $this->email = $email;
         $this->listId = $listId;
         $this->mergeFields = $mergeFields;
     }
 
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * Get listId
-     *
-     * @return string
-     */
-    public function getListId()
+    public function getListId(): string
     {
         return $this->listId;
     }
 
-    /**
-     * Get mergeFields
-     *
-     * @return array
-     */
-    public function getMergeFields()
+    public function getMergeFields(): array
     {
         return $this->mergeFields;
     }

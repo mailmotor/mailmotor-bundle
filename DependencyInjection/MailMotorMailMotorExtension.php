@@ -14,10 +14,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
  */
 class MailMotorMailMotorExtension extends ConfigurableExtension
 {
-    /**
-     * {@inheritDoc}
-     */
-    protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
+    protected function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');

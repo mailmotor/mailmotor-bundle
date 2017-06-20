@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class SubscriberGatewayPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         // always first check if the primary service is defined
         if (!$container->has('mailmotor.manager.subscriber_gateway')) {
