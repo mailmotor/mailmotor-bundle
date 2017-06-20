@@ -2,8 +2,6 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Gateway;
 
-use MailMotor\Bundle\MailMotorBundle\MailMotor;
-
 /**
  * Subscriber gateway
  *
