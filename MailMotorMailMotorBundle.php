@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class MailMotorMailMotorBundle extends Bundle
 {
-    public function build(ContainerBuilder $container)
+    public function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new SubscriberGatewayPass());
     }

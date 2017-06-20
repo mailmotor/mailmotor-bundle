@@ -12,90 +12,43 @@ use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
  */
 final class NotImplementedSubscriberGateway implements SubscriberGateway
 {
-    /**
-     * Exists
-     *
-     * @param string $email
-     * @param string $listId
-     * @return array
-     */
-    public function exists(
-        $email,
-        $listId = null
-    ) {
+    public function exists(string $email, string $listId = null): bool
+    {
         $this->throwException();
     }
 
-    /**
-     * Get interests
-     *
-     * @param string $listId
-     * @return array
-     */
-    public function getInterests(
-        $listId
-    ) {
+    public function getInterests(string $listId): array
+    {
         $this->throwException();
     }
 
-    /**
-     * Has status
-     *
-     * @param string $email
-     * @param string $listId
-     * @param string $status
-     * @return boolean
-     */
-    public function hasStatus(
-        $email,
-        $listId = null,
-        $status
-    ) {
+    public function hasStatus(string $email, string $listId = null, string $status): bool
+    {
         $this->throwException();
     }
 
-    /**
-     * Subscribe
-     *
-     * @param string $email
-     * @param string $listId
-     * @param string $language
-     * @param array $mergeFields
-     * @param array $interests The array is like: ['9AS489SQF' => true, '4SDF8S9DF1' => false]
-     * @param boolean $doubleOptin Members need to validate their emailAddress before they get added to the list
-     * @return boolean
-     */
     public function subscribe(
-        $email,
-        $listId = null,
-        $language = null,
-        $mergeFields = array(),
-        $interests = array(),
-        $doubleOptin = true
-    ) {
+        string $email,
+        string $listId = null,
+        string $language = null,
+        array $mergeFields = array(),
+        array $interests = array(),
+        bool $doubleOptin = true
+    ): bool {
         $this->throwException();
     }
 
-    /**
-     * Unsubscribe
-     *
-     * @param string $email
-     * @param string $listId
-     * @return boolean
-     */
     public function unsubscribe(
-        $email,
-        $listId = null
-    ) {
+        string $email,
+        string $listId = null
+    ): bool {
         $this->throwException();
     }
 
     /**
-     * Throw exception
-     *
-     * @return NotImplementedException
+     * @throws NotImplementedException
      */
-    protected function throwException()
+    private function throwException(): void
     {
         throw new NotImplementedException('The MailMotor has no active mail-engine subscriber gateway.');
     }

@@ -12,7 +12,7 @@ class SubscriberGatewayManager
         $this->subscriberGateways = array();
     }
 
-    public function addSubscriberGateway($gateway, $alias)
+    public function addSubscriberGateway(string $gateway, string $alias): void
     {
         $this->subscriberGateways[$alias] = $gateway;
     }

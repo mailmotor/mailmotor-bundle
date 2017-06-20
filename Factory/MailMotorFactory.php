@@ -22,36 +22,20 @@ class MailMotorFactory
      */
     protected $mailEngine;
 
-    /**
-     * Construct
-     *
-     * @param Container $container
-     * @param string $mailEngine
-     */
     public function __construct(
         Container $container,
-        $mailEngine
+        string $mailEngine
     ) {
         $this->container = $container;
         $this->setMailEngine($mailEngine);
     }
 
-    /**
-     * Get subscriber gateway
-     *
-     * @return SubscriberGateway
-     */
-    public function getSubscriberGateway()
+    public function getSubscriberGateway(): SubscriberGateway
     {
         return $this->container->get('mailmotor.' . $this->mailEngine . '.subscriber.gateway');
     }
 
-    /**
-     * Set mail engine
-     *
-     * @param string $mailEngine
-     */
-    protected function setMailEngine($mailEngine)
+    protected function setMailEngine(string $mailEngine): void
     {
         if ($mailEngine == null) {
             $mailEngine = 'not_implemented';

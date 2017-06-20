@@ -16,14 +16,8 @@ class MailMotor
      */
     protected $listId;
 
-    /**
-     * Construct
-     *
-     * @param string $listId
-     */
-    public function __construct(
-        $listId
-    ) {
+    public function __construct(string $listId)
+    {
         $this->listId = $listId;
     }
 
@@ -33,7 +27,7 @@ class MailMotor
      * @param string $listId If you want to use a custom list id
      * @return string
      */
-    public function getListId($listId = null)
+    public function getListId(string $listId = null): string
     {
         return ($listId == null) ? $this->listId : $listId;
     }
