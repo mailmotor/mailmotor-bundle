@@ -67,6 +67,11 @@ final class Subscriber extends MailMotor
         );
     }
 
+    public function ping(): bool
+    {
+        return $this->subscriberGateway->ping($this->getListId());
+    }
+
     /**
      * Subscribe
      *

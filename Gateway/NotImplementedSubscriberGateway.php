@@ -27,6 +27,11 @@ final class NotImplementedSubscriberGateway implements SubscriberGateway
         $this->throwException();
     }
 
+    public function ping(string $listId): bool
+    {
+        $this->throwException();
+    }
+
     public function subscribe(
         string $email,
         string $listId = null,

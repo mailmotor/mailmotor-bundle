@@ -15,6 +15,8 @@ interface SubscriberGateway
 
     public function hasStatus(string $email, string $listId, string $status): bool;
 
+    public function ping(string $listId): bool;
+
     /**
      * Subscribe
      *
