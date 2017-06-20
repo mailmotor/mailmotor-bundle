@@ -4,9 +4,9 @@
 
 **Note:** Requires PHP 7.1, because of `type hinting` and proper `return types` which helps improving PHP.
 
-## Examples
+## Installation
 
-### Configure (MailChimp)
+### How to configure MailChimp
 
 ```bash
 composer require mailmotor/mailchimp-bundle
@@ -27,6 +27,8 @@ mailmotor.mail_engine:  'mailchimp'
 mailmotor.api_key:      xxx # enter your mailchimp api_key here
 mailmotor.list_id:      xxx # enter the mailchimp default list_id here
 ```
+
+## Examples
 
 ### Subscribing
 
