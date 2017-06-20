@@ -27,7 +27,7 @@ final class Subscriber extends MailMotor
     public function __construct(
         SubscriberGateway $subscriberGateway,
         EventDispatcherInterface $eventDispatcher,
-        string $listId
+        string $listId = null
     ) {
         parent::__construct($listId);
         $this->subscriberGateway = $subscriberGateway;
