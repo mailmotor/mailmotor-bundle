@@ -14,19 +14,13 @@ class MailMotorUnsubscribedEvent extends Event
 {
     const EVENT_NAME = 'mail_motor_event.unsubscribed';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $email;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $listId;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $mergeFields;
 
     public function __construct(

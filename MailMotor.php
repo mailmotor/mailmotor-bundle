@@ -9,11 +9,7 @@ namespace MailMotor\Bundle\MailMotorBundle;
  */
 class MailMotor
 {
-    /**
-     * The default list id
-     *
-     * @var string
-     */
+    /** @var string - The default list id */
     protected $listId;
 
     public function __construct(string $listId)
@@ -24,7 +20,7 @@ class MailMotor
     /**
      * Get list id
      *
-     * @param string $listId If you want to use a custom list id
+     * @param string $listId - If you want to use a custom list id
      * @return string
      */
     public function getListId(string $listId = null): string

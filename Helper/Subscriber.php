@@ -18,14 +18,10 @@ final class Subscriber extends MailMotor
     public const MEMBER_STATUS_SUBSCRIBED = 'subscribed';
     public const MEMBER_STATUS_UNSUBSCRIBED = 'unsubscribed';
 
-    /**
-     * @var EventDispatcherInterface
-     */
+    /** @var EventDispatcherInterface */
     protected $eventDispatcher;
 
-    /**
-     * @var SubscriberGateway
-     */
+    /** @var SubscriberGateway */
     protected $subscriberGateway;
 
     public function __construct(

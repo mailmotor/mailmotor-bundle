@@ -12,14 +12,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface as Container;
  */
 class MailMotorFactory
 {
-    /**
-     * @var Container
-     */
+    /** @var Container */
     protected $container;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $mailEngine;
 
     public function __construct(

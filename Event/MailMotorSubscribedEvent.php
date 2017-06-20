@@ -14,34 +14,22 @@ class MailMotorSubscribedEvent extends Event
 {
     const EVENT_NAME = 'mail_motor_event.subscribed';
 
-    /**
-     * @var boolean
-     */
+    /** @var boolean */
     protected $hasDoubleOptin;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $email;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $language;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $listId;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $mergeFields;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $interests;
 
     public function __construct(
