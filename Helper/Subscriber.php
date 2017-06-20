@@ -77,23 +77,6 @@ final class Subscriber extends MailMotor
     }
 
     /**
-     * Get interests for category id
-     *
-     * @param string $interestCategoryId
-     * @param string $listId
-     * @return array
-     */
-    public function getInterestsForCategoryId(
-        $interestCategoryId,
-        $listId = null
-    ) {
-        return (array) $this->subscriberGateway->getInterestsForCategoryId(
-            $interestCategoryId,
-            $this->getListId($listId)
-        );
-    }
-
-    /**
      * Is subscribed
      *
      * @param string $email

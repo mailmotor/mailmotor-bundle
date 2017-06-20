@@ -12,9 +12,9 @@ class SubscriberGatewayManager
         $this->subscriberGateways = array();
     }
 
-    public function addSubscriberGateway(string $transport, string $alias)
+    public function addSubscriberGateway($gateway, $alias)
     {
-        $this->subscriberGateways[$alias] = $transport;
+        $this->subscriberGateways[$alias] = $gateway;
     }
 
     public function getAll(): array

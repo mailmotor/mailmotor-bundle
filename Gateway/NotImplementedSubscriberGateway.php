@@ -23,7 +23,7 @@ final class NotImplementedSubscriberGateway implements SubscriberGateway
         $email,
         $listId = null
     ) {
-        return $this->throwException();
+        $this->throwException();
     }
 
     /**
@@ -35,7 +35,7 @@ final class NotImplementedSubscriberGateway implements SubscriberGateway
     public function getInterests(
         $listId
     ) {
-        return $this->throwException();
+        $this->throwException();
     }
 
     /**
