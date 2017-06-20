@@ -12,7 +12,7 @@ class MailMotor
     /** @var string - The default list id */
     protected $listId;
 
-    public function __construct(string $listId)
+    public function __construct(?string $listId)
     {
         $this->listId = $listId;
     }
