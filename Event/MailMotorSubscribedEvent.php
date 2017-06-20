@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\Event;
  * This class is in fact an immutable event class holding all the data
  * that could be needed by event subscribers on the MailMotorSubscribedEvent
  *
- * @author Jeroen Desloovere <jeroen@siesqo.be>
+ * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
 class MailMotorSubscribedEvent extends Event
 {

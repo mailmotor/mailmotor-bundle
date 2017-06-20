@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 /**
  * This is the class that loads and manages your bundle configuration
  *
- * @author Jeroen Desloovere <jeroen@siesqo.be>
+ * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
 class MailMotorFactory
 {
