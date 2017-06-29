@@ -15,12 +15,12 @@ class MailMotorFactory
     /** @var Container */
     protected $container;
 
-    /** @var string */
+    /** @var string|null */
     protected $mailEngine;
 
     public function __construct(
         Container $container,
-        string $mailEngine
+        ?string $mailEngine
     ) {
         $this->container = $container;
         $this->setMailEngine($mailEngine);
@@ -31,7 +31,7 @@ class MailMotorFactory
         return $this->container->get('mailmotor.' . $this->mailEngine . '.subscriber.gateway');
     }
 
-    protected function setMailEngine(string $mailEngine): void
+    protected function setMailEngine(?string $mailEngine): void
     {
         if ($mailEngine == null) {
             $mailEngine = 'not_implemented';
