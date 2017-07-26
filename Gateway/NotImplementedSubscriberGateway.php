@@ -17,17 +17,17 @@ final class NotImplementedSubscriberGateway implements SubscriberGateway
         $this->throwException();
     }
 
-    public function getInterests(string $listId): array
+    public function getInterests(string $listId = null): array
     {
         $this->throwException();
     }
 
-    public function hasStatus(string $email, string $listId = null, string $status): bool
+    public function hasStatus(string $email, ?string $listId, string $status): bool
     {
         $this->throwException();
     }
 
-    public function ping(string $listId): bool
+    public function ping(string $listId = null): bool
     {
         $this->throwException();
     }
