@@ -5,12 +5,7 @@ namespace MailMotor\Bundle\MailMotorBundle\Manager;
 class SubscriberGatewayManager
 {
     /** @var array */
-    private $subscriberGateways;
-
-    public function __construct()
-    {
-        $this->subscriberGateways = array();
-    }
+    private $subscriberGateways = [];
 
     public function addSubscriberGateway(string $gateway, string $alias): void
     {
