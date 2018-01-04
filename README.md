@@ -1,5 +1,10 @@
 # MailMotorBundle
 
+[![Latest Stable Version](http://img.shields.io/packagist/v/mailmotor/mailmotor-bundle.svg)](https://packagist.org/packages/mailmotor/mailmotor-bundle)
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/mailmotor/mailmotor-bundle/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/mailmotor/mailmotor-bundle.svg?branch=new-version)](https://travis-ci.org/mailmotor/mailmotor-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mailmotor/mailmotor-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mailmotor/mailmotor-bundle/?branch=master)
+
 > Subscribing/Unsubscribing to your own mailinglist has never been this easy! Thanks to this Symfony bundle.
 
 **Note:** Requires PHP 7.1, because of `type hinting` and proper `return types` which helps improving PHP.
