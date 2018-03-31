@@ -2,7 +2,6 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Gateway;
 
-use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
 use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
 
 /**

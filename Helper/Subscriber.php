@@ -2,11 +2,11 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Helper;
 
-use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use MailMotor\Bundle\MailMotorBundle\MailMotor;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorSubscribedEvent;
 use MailMotor\Bundle\MailMotorBundle\Event\MailMotorUnsubscribedEvent;
+use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
+use MailMotor\Bundle\MailMotorBundle\MailMotor;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Subscriber - this is the class that will be used in the web app.
