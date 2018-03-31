@@ -31,10 +31,10 @@ public function registerBundles()
 ```yaml
 # In `app/config/parameters.yml`
 parameters:
-    # ...
-	mailmotor.mail_engine:  'mailchimp'
-	mailmotor.api_key:      xxx # enter your mailchimp api_key here
-	mailmotor.list_id:      xxx # enter the mailchimp default list_id here
+  # ...
+  mailmotor.mail_engine:  'mailchimp' # or another mailmotor engine
+  mailmotor.api_key:      xxx # enter your mailchimp api_key here
+  mailmotor.list_id:      xxx # enter the mailchimp default list_id here
 ```
 
 ## Examples
