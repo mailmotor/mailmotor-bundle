@@ -43,7 +43,7 @@ parameters:
 
 ```php
 $this->get('mailmotor.subscriber')->subscribe(
-    $email,         // f.e.: 'jeroen@siesqo.be'
+    $email,         // f.e.: 'info@jeroendesloovere.be'
     $language,      // f.e.: 'nl'
     $mergeFields,   // f.e.: ['FNAME' => 'Jeroen', 'LNAME' => 'Desloovere']
     $interests,     // f.e.: ['9A28948d9' => true, '8998ASAA' => false]
@@ -85,7 +85,7 @@ $this->get('mailmotor.subscriber')->isSubscribed(
 use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
 
 // Don't forget to add validation to your $email
-$email = 'jeroen@siesqo.be';
+$email = 'info@jeroendesloovere.be';
 
 try {
     if ($this->get('mailmotor.subscriber')->isSubscribed($email)) {
@@ -117,7 +117,7 @@ if ($noErrors)
 use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
 
 // Don't forget to add validation to your $email
-$email = 'jeroen@siesqo.be';
+$email = 'info@jeroendesloovere.be';
 
 try {
     // Email exists
