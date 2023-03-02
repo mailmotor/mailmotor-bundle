@@ -14,11 +14,12 @@
         }
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.4||^8.0",
         "symfony/http-kernel": "^2.3|^3.0|^4.0"
     },
     "require-dev": {
-        "symfony/framework-bundle": "^2.3|^3.0|^4.0"
+        "symfony/framework-bundle": "^2.3|^3.0|^4.0",
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": { "MailMotor\\Bundle\\MailMotorBundle\\": "" }

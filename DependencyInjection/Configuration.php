@@ -9,9 +9,6 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('mailmotor');
-
-        return $treeBuilder;
+        return new TreeBuilder('mailmotor');
     }
 }

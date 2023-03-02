@@ -7,8 +7,6 @@
 
 > Subscribing/Unsubscribing to your own mailinglist has never been this easy! Thanks to this Symfony bundle.
 
-**Note:** Requires PHP 7.1, because of `type hinting` and proper `return types` which helps improving PHP.
-
 ## Installation
 
 ### How to configure MailChimp
