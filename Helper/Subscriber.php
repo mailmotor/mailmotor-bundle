@@ -103,7 +103,6 @@ final class Subscriber extends MailMotor
         if ($subscribed) {
             // dispatch subscribed event
             $this->eventDispatcher->dispatch(
-                MailMotorSubscribedEvent::EVENT_NAME,
                 new MailMotorSubscribedEvent(
                     $email,
                     $this->getListId($listId),
@@ -111,7 +110,8 @@ final class Subscriber extends MailMotor
                     $mergeFields,
                     $interests,
                     $doubleOptin
-                )
+                ),
+                MailMotorSubscribedEvent::EVENT_NAME
             );
         }
 
@@ -128,11 +128,11 @@ final class Subscriber extends MailMotor
         if ($unsubscribed) {
             // dispatch unsubscribed event
             $this->eventDispatcher->dispatch(
-                MailMotorUnsubscribedEvent::EVENT_NAME,
                 new MailMotorUnsubscribedEvent(
                     $email,
                     $this->getListId($listId)
-                )
+                ),
+                MailMotorUnsubscribedEvent::EVENT_NAME
             );
         }
 
