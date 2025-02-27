@@ -12,7 +12,7 @@ services:
         class: MailMotor\Bundle\MailMotorBundle\Factory\MailMotorFactory
         public: true
         arguments:
-            - "@service_container"
+            - !tagged_locator { tag: mailmotor.subscriber_gateway, index_by: alias }
             - "%mailmotor.mail_engine%"
 
     # Manager
@@ -22,6 +22,5 @@ services:
     # Fallback gateway when no mail-engine is selected (at default)
     mailmotor.not_implemented.subscriber.gateway:
         class: MailMotor\Bundle\MailMotorBundle\Gateway\NotImplementedSubscriberGateway
-        public: true
         tags:
             - { name: mailmotor.subscriber_gateway, alias: not_implemented }

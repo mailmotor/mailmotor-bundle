@@ -2,8 +2,8 @@
 
 namespace MailMotor\Bundle\MailMotorBundle\Factory;
 
+use Symfony\Component\DependencyInjection\ServiceLocator;
 use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -12,28 +12,28 @@ use Symfony\Component\DependencyInjection\ContainerInterface as Container;
  */
 class MailMotorFactory
 {
-    /** @var Container */
-    protected $container;
+    /** @var ServiceLocator */
+    protected $gateways;
 
     /** @var string|null */
     protected $mailEngine;
 
     public function __construct(
-        Container $container,
+        ServiceLocator $gateways,
         ?string $mailEngine
     ) {
-        $this->container = $container;
+        $this->gateways = $gateways;
         $this->setMailEngine($mailEngine);
     }
 
     public function getSubscriberGateway(): SubscriberGateway
     {
-        return $this->container->get('mailmotor.' . $this->mailEngine . '.subscriber.gateway');
+        return $this->gateways->get($this->mailEngine);
     }
 
     protected function setMailEngine(?string $mailEngine): void
     {
-        if ($mailEngine == null) {
+        if ($mailEngine === null || !$this->gateways->has($mailEngine)) {
             $mailEngine = 'not_implemented';
         }
 
