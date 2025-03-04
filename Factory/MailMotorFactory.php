@@ -13,27 +13,27 @@ use MailMotor\Bundle\MailMotorBundle\Gateway\SubscriberGateway;
 class MailMotorFactory
 {
     /** @var ServiceLocator */
-    protected $gateways;
+    protected $serviceLocator;
 
     /** @var string|null */
     protected $mailEngine;
 
     public function __construct(
-        ServiceLocator $gateways,
+        ServiceLocator $serviceLocator,
         ?string $mailEngine
     ) {
-        $this->gateways = $gateways;
+        $this->serviceLocator = $serviceLocator;
         $this->setMailEngine($mailEngine);
     }
 
     public function getSubscriberGateway(): SubscriberGateway
     {
-        return $this->gateways->get($this->mailEngine);
+        return $this->serviceLocator->get($this->mailEngine);
     }
 
     protected function setMailEngine(?string $mailEngine): void
     {
-        if ($mailEngine === null || !$this->gateways->has($mailEngine)) {
+        if ($mailEngine === null || !$this->serviceLocator->has($mailEngine)) {
             $mailEngine = 'not_implemented';
         }
 
